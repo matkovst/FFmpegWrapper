@@ -1,0 +1,27 @@
+{
+    "cmake.configureSettings": 
+    {
+        "FFMPEG_DIR": "F:\\FFmpeg\\ffmpeg-4.1\\include",
+        "USE_CUDA": "OFF", 
+    },
+    "files.associations": 
+    {
+        "iostream": "cpp",
+        "ios": "c",
+        "xiosbase": "c",
+        "xlocale": "cpp",
+        "algorithm": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "ostream": "cpp",
+        "streambuf": "cpp",
+        "xlocnum": "cpp",
+        "xmemory": "cpp",
+        "xstring": "cpp",
+        "exception": "cpp",
+        "functional": "cpp",
+        "mutex": "cpp",
+        "system_error": "cpp",
+        "vector": "cpp"
+    }
+}
