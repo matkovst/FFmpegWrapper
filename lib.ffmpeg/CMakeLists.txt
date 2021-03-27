@@ -3,7 +3,10 @@ set(CMAKE_DEBUG_POSTFIX d)
 cmake_minimum_required(VERSION 3.15)
 project( lib.ffmpeg )
 
-option(USE_CUDA "Use CUDA" ON)
+if(NOT USE_CUDA)
+    message(STATUS "USE_CUDA have not been set. Set USE_CUDA = OFF")
+    option(USE_CUDA "Use CUDA" OFF)
+endif()
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__STDC_CONSTANT_MACROS")
@@ -28,8 +31,8 @@ if(USE_CUDA)
 endif()
 
 # FFmpeg
-set(FFMPEG_INCLUDE_DIRS "${FFMPEG_DIR}")
-set(FFMPEG_LIBDIR "${FFMPEG_DIR}")
+set(FFMPEG_INCLUDE_DIRS "${FFMPEG_DIR}/include")
+set(FFMPEG_LIBDIR "${FFMPEG_DIR}/include")
 
 find_library(AVCODEC_LIB    avcodec    HINTS ${FFMPEG_LIBDIR})
 find_library(AVFORMAT_LIB   avformat   HINTS ${FFMPEG_LIBDIR})

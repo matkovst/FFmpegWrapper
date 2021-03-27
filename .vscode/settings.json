@@ -1,7 +1,7 @@
 {
     "cmake.configureSettings": 
     {
-        "FFMPEG_DIR": "F:\\FFmpeg\\ffmpeg-4.1\\include",
+        "FFMPEG_DIR": "F:\\FFmpeg\\ffmpeg-4.1",
         "USE_CUDA": "OFF", 
     },
     "files.associations": 
