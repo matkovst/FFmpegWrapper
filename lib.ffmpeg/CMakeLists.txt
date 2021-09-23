@@ -1,6 +1,6 @@
 set(CMAKE_DEBUG_POSTFIX d)
 
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.13)
 project( lib.ffmpeg )
 
 if(NOT USE_CUDA)
@@ -31,16 +31,19 @@ if(USE_CUDA)
 endif()
 
 # FFmpeg
-set(FFMPEG_INCLUDE_DIRS "${FFMPEG_DIR}/include")
-set(FFMPEG_LIBDIR "${FFMPEG_DIR}/include")
+if(NOT FFMPEG_DIR)
+    message(WARNING "FFMPEG_DIR have not been specified. Searching ffmpeg in system path ...")
+else()
+    set(FFMPEG_INCLUDE_DIRS "${FFMPEG_DIR}/include")
+    set(FFMPEG_LIBDIR "${FFMPEG_DIR}/include")
+endif()
 
 find_library(AVCODEC_LIB    avcodec    HINTS ${FFMPEG_LIBDIR})
 find_library(AVFORMAT_LIB   avformat   HINTS ${FFMPEG_LIBDIR})
 find_library(AVUTIL_LIB     avutil     HINTS ${FFMPEG_LIBDIR})
-find_library(AVDEVICE_LIB   avdevice   HINTS ${FFMPEG_LIBDIR})
 find_library(SWSCALE_LIB    swscale    HINTS ${FFMPEG_LIBDIR})
 find_library(SWRESAMPLE_LIB swresample HINTS ${FFMPEG_LIBDIR})
-set(FFMPEG_LIBRARIES ${AVCODEC_LIB} ${AVFORMAT_LIB} ${AVUTIL_LIB} ${AVDEVICE_LIB} ${SWSCALE_LIB} ${SWRESAMPLE_LIB})
+set(FFMPEG_LIBRARIES ${AVCODEC_LIB} ${AVFORMAT_LIB} ${AVUTIL_LIB} ${SWSCALE_LIB} ${SWRESAMPLE_LIB})
 
 # CUDA
 include(CheckLanguage)
